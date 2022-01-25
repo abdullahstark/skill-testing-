@@ -1,0 +1,19 @@
+const ArrayKeyedMap = require('array-keyed-map')
+const m = new ArrayKeyedMap()
+
+const obj = { x: true }
+const objIdentical = { x: true }
+const fun = function() {}
+const reg = /regexp/ 
+// Set values
+m.set([obj],            1)
+m.set([obj, fun],       2)
+m.set([reg, reg, true], 3)
+m.set([],               4)
+
+// Get values
+console.log( m.get([obj]) )            // => 1
+console.log( m.get([objIdentical]) )   // => undefined
+console.log( m.get([obj, fun]) )       // => 2
+console.log( m.get([reg, reg, true]) ) // => 3
+console.log( m.get([]) )               // => 4
